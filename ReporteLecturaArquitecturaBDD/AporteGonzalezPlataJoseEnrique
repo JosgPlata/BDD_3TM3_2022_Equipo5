@@ -34,6 +34,24 @@ proveen aplicaciones de entorno. En el caso de la arquitectura peer-to-peer cada
 encargarse de todas las funciones del sistema gestor de bases de datos, comunicando con otras 
 máquinas consultas y transacciones.
 
+Heterogeneidad 
+
+El fenómeno de la heterogeneidad no es un fenómeno propio de los sistemas de bases de datos, 
+sino una característica de un sistema distribuido, en este sentido, existe heterogeneidad tanto en hardware 
+(Arquitectura de procesadores, cables y conectores, memorias, etc.) como en software (Tipos de datos, tamaño de datos
+, Sistema operativo, acceso a memoria, set de instrucciones, etc.). 
+Los aspectos heterogéneos más relevantes en el contexto de bases de datos son, 
+la heterogeneidad de los lenguajes de consulta y los paradigmas de acceso a los datos, 
+incluso dentro del estándar SQL existen variaciones no solo a nivel de implementación, 
+sino a nivel sintáctico ya que cada implementación (MySQL, MS-SQL-SERVER,POSTGRESQL, 
+entre otros dentro de un mismo gestor podemos tener diferentes mecanismos de almacenamiento de datos, 
+tal es el caso de MySQL, en el que los datos se pueden almacenar mediante InnoDB, MyISAM y otros mecanismos) 
+Hay que resaltar que el problema de la heterogeneidad no es un problema trivial, por ejemplo, 
+¿Qué deberia suceder si de un dato tengo un float 64 y del otro lado solo soporto floats de 32 bits? 
+Este es un concepto importante en el contexto de las bases de datos distribuidas, de ahí que tengamos que seleccionar
+el driver correcto para poder realizar la comunicación entre servidores de bases de datos y que existan implementaciones 
+diferentes, para diferentes arquitecturas y sistemas operativos. 
+
 Sistemas Peer-to-Peer
 [3]“Una arquitectura de red distribuida puede ser llamada una red peer-to-peer (P-to-P, P2P0, etc.) si 
 los participantes comparten una parte de sus propios recursos de hardware (poder de procesamiento, capacidad 
