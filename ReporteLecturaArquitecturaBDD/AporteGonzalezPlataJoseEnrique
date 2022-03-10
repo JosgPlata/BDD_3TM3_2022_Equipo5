@@ -69,6 +69,33 @@ otras aplicaciones.
 capa de aplicación: Provee paquetes de software para ser usados por usuarios y desarrolladores para explotar la 
 naturaleza distribuida de la infraestructura p2p.
 
+Arquitectura de referencia de DBMSs distribuidos.
+[1]“Debido a la diversidad de DBMSs distribuidos es complicado presentar una arquitectura común aplicable a para 
+todas las aplicaciones. Los datos en un sistema distribuido están usualmente fragmentados y replicados. Considerando 
+estos casos de fragmentación y replicación, la arquitectura de referencia consiste en los siguientes esquemas:”
+o	Un conjunto de esquemas globales externos.
+o	Un esquema conceptual global (GCS)
+o	Un esquema de fragmentación y un esquema de asignación
+o	Un conjunto de esquemas por cada DBMS local, conforme la arquitectura ANSI/SPARC.
+ 
+Arquitectura de referencia de DBMS distribuidos.
+Esquema externo global: Este es el nivel más alto en la arquitectura de referencia. Este nivel describe que parte de la
+base de datos distribuida es relevante para diferentes usuarios.
+Esquema conceptual global: El GCS representa la descripción lógica de la base de datos entera como si no estuviera distribuida.
+Este nivel corresponde al nivel conceptual de la arquitectura ANSI/SPARC y contiende la definición de todas las entidades, sus 
+relaciones y seguridad e integridad de información para toda la base de datos.
+
+Esquema de fragmentación y esquema de asignación: En una base de datos distribuida, los datos pueden estar divididos en fragmentos. 
+El esquema de fragmentación describe como los datos se dividirán lógicamente los datos en una base de datos distribuida. El GCS 
+consiste en un conjunto de relaciones globales y el mapeo entre las relaciones globales y los fragmentos está definido en el esquema 
+de fragmentación. El esquema de asignación es una descripción de donde los fragmentos deben ser localizados, tomando en cuenta cualquier replicación.
+Esquemas locales: Cada DBMS local tiene su propio conjunto de esquemas. Los esquemas local conceptual y local interno corresponden a 
+los niveles equivalentes de ANSI/SPARC. La organización física de los datos es posiblemente diferente en cada máquina, por lo tanto, se 
+requiere una definición interna esquemática en cada sitio, llamado esquema interno local. Para encargarse de los problemas de fragmentación y 
+replicación la organización lógica de los datos en cada sitio está descrito como una tercera capa en la arquitectura, llamado esquema conceptual local,
+el GCS es la unión de todos los esquemas conceptuales locales, los esquemas conceptuales locales son un mapeo de del esquema global. Este mapeo está hecho
+por esquemas locales de mapeo. 
+
 
 Referencias usadas:
 [1] 	C. Ray, «Distributed DBMS Architecture,» de Distributed database systems, NOIDA, Dorling Kindersley, 2009, pp. 87-102.
