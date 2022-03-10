@@ -1,0 +1,70 @@
+Arquitectura Centralizada Genérica
+
+Cuando el DBMS se ejecuta en una computadora este es interconectado con dos componentes: El subsistema de comunicación y el sistema operativo.
+El subsistema de comunicación permite a la DBMS intercomunicarse con otros subsistemas para poder comunicarse con las aplicaciones. Por ejemplo, el monitor de la terminal necesita
+comunicarse con la DBMS para poder ejecutar las transacciones. Y el sistema operativo proporciona la interfaz entre el DBMS y la computadora.
+Como se puede observar en la imagen anterior, la DBMS funciona en 6 capas que son la interfaz, el control, la compilación, la ejecución, el acceso a los datos y la gestión de 
+consistencia.
+La capa de interfaz se encarga administrar las interfaces de las aplicaciones. 
+La capa de control se encarga de controlar la consulta agregando predicados de integridad semántica y predicados de autorización. Por Integridad Semántica queremos decir que es 
+la adaptación de la base de datos con las restricciones derivadas de nuestro conocimiento de lo que está y no está permitido en aquella parte del universo que esté representada 
+por los datos de la base de datos. El mantenimiento de la Integridad semántica implica evitar que se inserten en la base de datos, los datos que representen un estado no permitido
+del universo. Y el predicado de autorización se encarga de autorizar la consulta, valga la redundancia.
+La capa de compilación se encarga de asignar la consulta a una secuencia optimizada de operaciones del sistema binario. Descompone la consulta en un árbol de operaciones de 
+algebra e intenta encontrar el orden óptimo de las operaciones. La salida de esta capa es una consulta expresada sistema binario.
+La capa de ejecución se encarga de dirigir la ejecución administrando la gestión de transacciones y sincronizando las operaciones algebraicas. Interpreta las operaciones 
+llamando a la capa de acceso de datos a través de las solicitudes de recuperación y actualización. La capa de acceso a datos gestiona las estructuras de datos que implementan 
+los archivos, índices, etc. También gestiona los búferes almacenando en caché los datos a los que se accede con mayor frecuencia. El uso cuidadoso de esta capa minimiza el 
+acceso a los discos para obtener o escribir datos. Finalmente, la capa de consistencia administra el control de concurrencia y el registro de solicitudes de actualización. 
+Esta capa permite la recuperación de transacciones, sistemas y medios después de una falla.
+
+
+Arquitecturas para una Bases de Datos Distribuidas
+Ahora consideramos las posibles formas en que se puede diseñar una DBMS distribuida. La imagen siguiente organiza los sistemas con respecto a la autonomía de los sistemas 
+locales, su distribución y su heterogeneidad.
+
+Autonomía
+La autonomía se refiere a la distribución de control, no de los datos. Indica el grado en que los DBMS individuales puedan operar de forma independiente. Los DBMS 
+individualmente pueden intercambiar información, ejecutar transacciones de forma independiente y se permite modificarlas. Para que un sistema distribuido sea autónomo debe 
+cumplir los siguientes requisitos:
+•	Las operaciones locales de los DBMS individuales no se ven afectadas por su participación en el sistema distribuido.
+•	La forma en que los DBMS individuales procesan las consultas y las optimizan no deben verse afectadas por la ejecución de consultas globales que acceden a múltiples bases 
+de datos.
+•	La funcionalidad del sistema no debe verse comprometida cuando los DBMS individuales se unen o abandonan el sistema distribuido.
+Por otro lado, existen diferentes dimensiones de autonomía, que son:
+•	Autonomía de diseño: los DBMS individuales son libres de usar los modelos de datos y las técnicas de gestión de transacciones que prefieran.
+•	Autonomía de comunicación: Cada uno de los DBMS es libre de tomar su propia decisión sobre qué tipo de información quiere proporcionar a los otros DBMS o al software que
+controla su ejecución global.
+•	Autonomía de ejecución: Cada DBMS puede ejecutar las transacciones de la forma que desee.
+También existen los DBMS semiautónomos que consisten en DBMS que pueden operar de forma independiente, sus datos locales se puedan compartir. 
+Cada uno de estos DBMS determina qué partes de su propia base de datos harán accesibles a los usuarios de otros DBMS. No son sistemas completamente autónomos porque necesitan 
+ser modificados para permitirles intercambiar información entre sí. La última alternativa que consideramos es el aislamiento total, donde los sistemas individuales son DBMS 
+independientes que no conocen la existencia de otros DBMS. En dichos sistemas, el procesamiento de transacciones de usuarios que acceden a múltiples bases de datos es 
+especialmente difícil ya que no existe un control global sobre la ejecución de DBMS individuales.
+
+Sistemas Cliente/Servidor
+
+A principios de la década de 1990 surgió los DBMS Cliente/Servidor, tuvo un impacto muy significativo dentro de la tecnología DBMS. La idea del Cliente/Servidor 
+es simple y elegante, se basa en distinguir las funciones del servidor y las funciones del cliente. Esto proporciona una arquitectura de dos niveles que facilita la 
+gestión de los DBMS. Pero DBMS cliente/servidor no se refiere a procesos, si no a maquinas(usuarios). Por lo tanto, nos enfocaremos que software debe ejecutarse en las 
+máquinas cliente y en las máquinas servidor. Dicho de esta manera, el problema es más claro y podemos comenzar a estudiar las diferencias en la funcionalidad del cliente 
+y del servidor. En los sistemas relacionales, el servidor realiza la mayor parte del trabajo de gestión de datos. Esto significa que todo el procesamiento y la optimización
+de consultas, la gestión de transacciones y la gestión de almacenamiento se realizan en el servidor. El cliente, además de la aplicación y la interfaz de usuario, tiene un
+módulo de cliente DBMS que es responsable de administrar los datos que se almacenan en caché en el cliente y administrar los bloqueos de transacciones que también pueden 
+haberse almacenado en caché.
+La arquitectura de la imagen anterior es bastante común en los sistemas relacionales donde la comunicación entre los clientes y el (los) servidor(es) se encuentra 
+al nivel de las sentencias SQL. En otras palabras, el cliente pasa consultas SQL al servidor sin intentar comprenderlas. El servidor hace la mayor parte del trabajo y
+devuelve los resultados al cliente. Hay varios tipos arquitectura cliente/servidor. El más simple es el caso en el que solo hay un servidor al que acceden varios clientes. 
+A esto lo llamamos cliente múltiple/servidor único. Desde la perspectiva de la gestión de datos, esto no es muy diferente de las bases de datos centralizadas, ya que la base
+de datos se almacena en una sola máquina (el servidor). Sin embargo, existen diferencias con respecto a los sistemas centralizados en la forma en que se ejecutan las 
+transacciones y se administran los cachés. Una arquitectura cliente/servidor más sofisticado es aquella en la que hay múltiples servidores en el sistema. En este caso, 
+existen dos estrategias de gestión: cada cliente gestiona su propia conexión con su propio servidor o cada cliente conoce solo su "servidor doméstico" y luego se comunica 
+con otros servidores. El primer enfoque simplifica el código del servidor, pero carga las máquinas cliente con responsabilidades adicionales. Esto conduce a lo que se ha 
+denominado sistemas de “cliente pesado”. El último enfoque concentra la funcionalidad de gestión de datos en los servidores. Por lo tanto, la transparencia del acceso a 
+los datos se proporciona en la interfaz del servidor, lo que lleva a "clientes ligeros".
+
+Referencias usadas:
+[4] 	M. Tamer Özsu y Patrick Valduriez, Principles of Distributed Database Systems, Springer, 2011. 
+[5] 	R. M., «ComputerWeekly,» 14 09 2019. [En línea]. Available: https://www.computerweekly.com/es/definicion/Sistema-de-gestion-de-bases-de-datos-o-DBMS. [Último acceso: 09 03 2022].
+[6] 	E, «Monografias,» 12 03 2021. [En línea]. Available: https://www.monografias.com/trabajos58/procesamiento-datos/procesamiento-datos2. [Último acceso: 09 03 2022].
+
