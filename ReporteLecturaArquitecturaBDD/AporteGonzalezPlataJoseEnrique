@@ -1,0 +1,41 @@
+Introducción
+[1]“La arquitectura de un sistema refleja la estructura del sistema subyacente. 
+Define los diferentes componentes del sistema, las funciones de estos componentes y 
+las interacciones y relaciones generales entre ellos. Este concepto es válido tanto 
+para los sistemas informáticos generales como para los sistemas de software.”
+
+
+Arquitectura ANSI/SPARC
+En la década de los 70s el comité de computación y procesamiento de información (X3) 
+del ANSI estableció un grupo de estudio en sistemas de gestión de bases de datos, 
+auspiciado por   el SPARC, con el propósito de establecer estándares en esa área. 
+El framework arquitectónico propuesto es conocido como “arquitectura ANSI/SPARC”.
+[2]“El framework de ANSI/SPARC DBMS describe un sistema gestor de bases de datos 
+en términos de interfaces, roles de personal, funciones de procesamiento, y flujos 
+de información dentro del sistema.”
+
+Niveles de Representación y Descripción de datos
+El framework ANSI/SPARC propone una arquitectura con “coexistencia” de tres niveles 
+para DBMSs. Una versión simplificada se muestra en la siguiente imagen.
+ 
+Hay tres vistas de datos: la vista externa, la cual es del usuario final, quien puede 
+ser un programador; la vista interna, esa del sistema o maquina; y la vista conceptual, 
+la de la empresa. Por cada vista se requiere definir un esquema.
+En el nivel más bajo se encuentra la vista interna, la cual trata con la definición física 
+y organización de los datos. En el otro extremo está la vista externa la cual se encarga de 
+la forma en la que los usuarios ven la base de datos. Entre estos dos niveles está el esquema 
+conceptual, el cuál es una definición abstracta de la base de datos. Esta parte es la vista del 
+“mundo real” de la empresa siendo modelada en la base de datos.
+
+Distribución
+La distribución hace referencia al manejo y localización física de los datos. En la arquitectura 
+cliente/servidor el servidor se encarga de los deberes del manejo de datos mientras que los clientes 
+proveen aplicaciones de entorno. En el caso de la arquitectura peer-to-peer cada nodo puede 
+encargarse de todas las funciones del sistema gestor de bases de datos, comunicando con otras 
+máquinas consultas y transacciones.
+
+
+Referencias usadas:
+[1] 	C. Ray, «Distributed DBMS Architecture,» de Distributed database systems, NOIDA, Dorling Kindersley, 2009, pp. 87-102.
+[2] 	G. d. T. d. M. d. A. d. B. d. D. (DAFTG), «Modelo de referencia para estandarización de DBMS,» Departamento de Comercio de Estados Unidos, 1985.
+[3] 	M. Tamer Özsu y Patrick Valduriez, Principles of Distributed Database Systems, Springer, 2011. 
