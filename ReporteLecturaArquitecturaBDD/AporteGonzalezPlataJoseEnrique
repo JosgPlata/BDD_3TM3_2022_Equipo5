@@ -34,8 +34,26 @@ proveen aplicaciones de entorno. En el caso de la arquitectura peer-to-peer cada
 encargarse de todas las funciones del sistema gestor de bases de datos, comunicando con otras 
 máquinas consultas y transacciones.
 
+Sistemas Peer-to-Peer
+[3]“Una arquitectura de red distribuida puede ser llamada una red peer-to-peer (P-to-P, P2P0, etc.) si 
+los participantes comparten una parte de sus propios recursos de hardware (poder de procesamiento, capacidad 
+de almacenamiento, capacidad de enlace de red, impresoras…). Estos recursos compartidos son necesarios para
+proveer el servicio y contenido ofrecido por la red.”
+En una arquitectura P2P se tiene varios módulos idénticos, que corren en diferentes computadoras. 
+Los diferentes módulos almacenados en diferentes sitios se comunican entre ellos para completar los procesos 
+requeridos. En esta arquitectura cada nodo puede acceder a servicios tanto como proveerlos a otros nodos. 
+Estos módulos pueden ser divididos en tres capas:
+capa de superposición de base: Se ocupa del problema de descubrir otros participantes en el sistema y crear 
+un mecanismo para que todos los nodos se comuniquen entre sí. Se encarga de que todos los participantes en la
+red estén al tanto de otros participantes.
+capa de middleware: Incluye componentes de software adicional que pueden ser potencialmente rehusados por muchas
+otras aplicaciones.
+capa de aplicación: Provee paquetes de software para ser usados por usuarios y desarrolladores para explotar la 
+naturaleza distribuida de la infraestructura p2p.
+
 
 Referencias usadas:
 [1] 	C. Ray, «Distributed DBMS Architecture,» de Distributed database systems, NOIDA, Dorling Kindersley, 2009, pp. 87-102.
 [2] 	G. d. T. d. M. d. A. d. B. d. D. (DAFTG), «Modelo de referencia para estandarización de DBMS,» Departamento de Comercio de Estados Unidos, 1985.
-[3] 	M. Tamer Özsu y Patrick Valduriez, Principles of Distributed Database Systems, Springer, 2011. 
+[3] 	R. Schollmeier, «Una definición de redes de P2P para la clasificación de arquitecturas y aplicaciones de P2P,» de Primera Conferencia Internacional sobre Computación Peer-to-Peer, Munchen, Alemania., 2002. 
+[4] 	M. Tamer Özsu y Patrick Valduriez, Principles of Distributed Database Systems, Springer, 2011. 
