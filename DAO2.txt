@@ -1,0 +1,14 @@
+Integrantes:
+1.Arciniega Noriega Carlos Josue
+2.González Plata José Enrique
+3.Morales Rodriguez Diego Emilio
+
+Ubicación repositorio general:
+BDD_3TM3_2022_Equipo5/ProyectoBDD2/
+
+Procedimientos almacenados usados:
+BDD_3TM3_2022_Equipo5/ProyectoBDD2/Procedimiento Almacenado SalesOrderDetail.sql
+BDD_3TM3_2022_Equipo5/ProyectoBDD2/Procedimiento Almacenado SalesOrderHeader.sql
+
+Codigo del proyecto en java:
+BDD_3TM3_2022_Equipo5/ProyectoBDD2/src/
