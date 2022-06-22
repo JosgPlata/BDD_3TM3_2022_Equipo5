@@ -1,0 +1,19 @@
+Ruta Del ejercicio: ./Fragmentacion
+
+Descripción de archivos:
+
+
+Arquitectura.png                :Representación gráfica de la arquitectura usada
+CreaciónDeUsuarioAutomap        :Creación de usuario auxiliar usado para mapear la base de datos a JPA java code
+EnunciadosDistribución (1).sql  :Solución a las consultas antes de la fragmentación 
+FRAGMENTACION_DOCKER.sh         :Script que automatiza el levantamiento de contenedores, restauración de las bases 
+                                 de datos y creación de vistas y procedimientos almacenados
+Fragmentacion.pdf               :Justificación de nuestro esquema de fragmentación V1
+Fragmentacion2.pdf              :Justificación de nuestro esquema de fragmentación V2
+Integrantes                     :Nombre de los integrantes del equipo
+PrimerProyecto.zip              :Zip Proyecto en spring
+Pruebas-de-fragmentación.sql    :Script SQL de pruebas para verificar que la fragmentación es correcta
+mainutils.sql                   :Script de Procedimientos almacenados para el MAIN SERVER de mssql
+raiz                            :
+utils.sql                       :Script de vistas para los servidores de fragmentos
+
