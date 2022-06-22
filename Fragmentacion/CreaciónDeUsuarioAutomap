@@ -1,0 +1,7 @@
+CREATE LOGIN AUTOMAPPER WITH PASSWORD = 'P4ssw@rd1'
+go
+
+use AdventureWorks2019
+go
+IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = N'AUTOMAPPER') BEGIN    CREATE USER [AUTOMAPPER] FOR LOGIN [AUTOMAPPER]   EXEC sp_addrolemember N'db_owner', N'AUTOMAPPER' END;
+GO
